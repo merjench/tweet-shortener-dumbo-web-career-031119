@@ -22,7 +22,6 @@ def word_substituter(tweet)
         word
     end
   end.join(" ")
-end
 end 
 
 
@@ -32,22 +31,38 @@ def bulk_tweet_shortener(tweet)
   end
 end
 
+# def selective_tweet_shortener(tweet)
+  # tweet.split(" ").map do |phrase|
+    # if phrase.length > 140
+    #  word_substituter(phrase)
+  #  elsif phrase.length <= 140
+   #   phrase
+  #  end
+#  end
+# end
+
 def selective_tweet_shortener(tweet)
-  tweet.split(" ").map do |phrase|
-    if phrase.length > 140
-      word_substituter(phrase)
-    elsif phrase.length <= 140
-      phrase
-    end
+  if tweet.length > 140
+    word_substituter(tweet)
+  else
+    tweet
   end
 end
 
+#def shortened_tweet_truncator(tweet)
+ # tweet.split(" ").map do |phrase|
+  #  if phrase.length > 140
+   #   word_substituter(phrase)[0..140] + "..."
+    #else
+     # phrase
+    #end
+  #end.join(" ")
+# end
+
 def shortened_tweet_truncator(tweet)
-  tweet.split(" ").map do |phrase|
-    if phrase.length > 140
-      word_substituter(phrase)[0..140] + "..."
-    else
-      phrase
-    end
-  end.join(" ")
+  if word_substituter(tweet).length > 140
+    word_substituter(tweet)[0..136] + '...'
+  else
+    tweet
+  end
 end
